@@ -30,12 +30,11 @@ if ($activity_id > 0)
         'label' => Yii::t('common', 'Участники'),
         'content' => $this->render('_participants', ['model' => $model, 'activity_id' => $activity_id, 'participants' => $participants, 'pages' => $pages]),
     ];
-/*
+
     $items []= [
         'label' => Yii::t('common', 'Сообщения'),
         'content' => $this->render('_chat', ['model' => $model, 'object_id' => $model->id]),
     ];
-*/
 }
 ?>
 <?=Tabs::widget([
