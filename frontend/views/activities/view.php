@@ -17,7 +17,7 @@ $this->registerMetaTag(['name' => 'og:description', 'content' => $model->descrip
 $this->registerMetaTag(['name' => 'og:url', 'content' => Url::current()]);
 $this->registerMetaTag(['name' => 'og:type', 'content' => 'article']);
 $this->registerMetaTag(['name' => 'og:image', 'content' => 'http://' . Yii::$app->request->hostName . $main_image]);
-$this->params['breadcrumbs'][] = ['label' => Yii::t('common', 'Поиск движа'), 'url' => Url::to(['activities/index'])];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('common', 'Поиск мероприятия'), 'url' => Url::to(['activities/index'])];
 $this->params['breadcrumbs'][] = ['label' => $model->name];
 ?>
 <?php $form = ActiveForm::begin(['action' => Url::to(['activities/applyparticipant'])]); ?>

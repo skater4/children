@@ -13,7 +13,7 @@ use yii\helpers\Url;
 use common\models\User;
 use app\models\Participant;
 use vision\messages\models\Messages;
-
+use app\components\Csc;
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -49,14 +49,14 @@ AppAsset::register($this);
         'items' => $menuItems,
     ]);
     $menuItems = [];
-
     if (!Yii::$app->user->isGuest) {
-        $menuItems []=['label' => Yii::t('common', 'Поиск движа'), 'url' => Url::to(['/activities/index', 'page' => 1])];
+        $role = User::getRole(Yii::$app->user->getId());
+        $menuItems []=['label' => Yii::t('common', 'Поиск мероприятия'), 'url' => Url::to(['/activities/index', 'page' => 1])];
         $menuItems []=['label' => Yii::t('common', 'Мои участия'), 'url' => Url::to(['/myparticipation/index', 'page' => 1])];
         /*$new_messages = new Messages();
         $new_messages = $new_messages->getNewMessagesCount(Yii::$app->user->id);
         if ($new_messages > 0) $menuItems []=['label' => Yii::t('common', 'Новые сообщения') . " (" . $new_messages . ")", 'url' => Url::to(['/newmessages/index', 'page' => 1])];*/
-        $menuItems []=['label' => Yii::t('common', 'Мои движухи'), 'url' => Url::to(['/myactivity/index', 'page' => 1])];
+        if (in_array($role, ['volunteer'])) $menuItems [] = ['label' => Yii::t('common', 'Мои мероприятия'), 'url' => Url::to(['/myactivity/index', 'page' => 1])];
         $incoming_requests = Participant::getActivitiesParticipantsCount();
         if ($incoming_requests > 0) $menuItems []=['label' => Yii::t('common', 'Входящие заявки') . ' (' . $incoming_requests . ')', 'url' => Url::to(['/participants/incoming', 'page' => 1])];
         $menuItems []=['label' => Yii::t('common', 'Мой профиль'), 'url' => Url::to(['/user/index'])];

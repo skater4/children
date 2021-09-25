@@ -9,10 +9,10 @@ use app\models\ActivityCategories;
 use app\models\Countries;
 use kartik\datetime\DateTimePicker;
 use common\models\User;
-$this->title = Yii::t('common', 'Поиск движа');
-$this->params['breadcrumbs'][] = ['label' => "Поиск движа"];
+$this->title = Yii::t('common', 'Поиск мероприятия');
+$this->params['breadcrumbs'][] = ['label' => "Поиск мероприятия"];
 ?>
-    <h1><?=Yii::t('common', 'Поиск движа')?></h1>
+    <h1><?=Yii::t('common', 'Поиск мероприятия')?></h1>
 <?php
 $i = 1;
 $activity = new Activity();

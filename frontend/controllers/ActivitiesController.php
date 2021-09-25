@@ -118,7 +118,7 @@ class ActivitiesController extends \yii\web\Controller
                 ->setSubject(Yii::t('common', 'У вас новая заявка на движуху'))
                 ->setHtmlBody($body)
                 ->send();
-            Yii::$app->session->setFlash('success', Yii::t('common', 'К успеху шел!'));
+            Yii::$app->session->setFlash('success', Yii::t('common', 'Успешно!'));
             $this->redirect(Url::to(['activities/view', 'id' => $model->activity_id]));
         }
         else $this->redirect(Url::to(['activities/view', 'id' => $model->activity_id]));

@@ -6,6 +6,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use app\models\UserRoles;
 
 $this->title = Yii::t('common', 'Регистрация');
 $this->params['breadcrumbs'][] = $this->title;
@@ -18,6 +19,8 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
 
                 <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+
+                <?= $form->field($model, 'role')->dropDownList(UserRoles::getRoles())?>
 
                 <?= $form->field($model, 'email') ?>
 

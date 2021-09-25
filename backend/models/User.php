@@ -29,6 +29,7 @@ use Yii;
  * @property string $activity
  * @property string $interests
  * @property string $study
+ * @property string $role
  *
  * @property Message[] $messages
  * @property Message[] $messages0
@@ -49,9 +50,9 @@ class User extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at', 'firstname', 'lastname', 'birthday', 'sex', 'country', 'city_id', 'phone', 'relationship', 'job', 'activity', 'interests', 'study'], 'required'],
+            [['username', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at', 'firstname', 'lastname', 'birthday', 'sex', 'country', 'city_id', 'phone', 'relationship', 'job', 'activity', 'interests', 'study', 'role'], 'required'],
             [['status', 'created_at', 'updated_at', 'birthday', 'city_id'], 'integer'],
-            [['phone', 'relationship', 'job', 'activity', 'interests', 'study'], 'string'],
+            [['phone', 'relationship', 'job', 'activity', 'interests', 'study', 'role'], 'string'],
             [['username', 'password_hash', 'password_reset_token', 'email', 'verification_token'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['firstname', 'lastname'], 'string', 'max' => 50],
@@ -91,6 +92,7 @@ class User extends \yii\db\ActiveRecord
             'activity' => Yii::t('app', 'Activity'),
             'interests' => Yii::t('app', 'Interests'),
             'study' => Yii::t('app', 'Study'),
+            'role' => Yii::t('app', 'Role'),
         ];
     }
 

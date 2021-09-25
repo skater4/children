@@ -7,11 +7,11 @@ use app\models\Countries;
 use yii\helpers\Html;
 use app\models\Activity;
 use app\models\ActivityCategories;
-$this->title = Yii::t('common', 'Мои движухи');
+$this->title = Yii::t('common', 'Мои мероприятия');
 ?>
-    <h1><?=Yii::t('common', 'Мои движухи')?></h1>
+    <h1><?=Yii::t('common', 'Мои мероприятия')?></h1>
 <?php
-$this->params['breadcrumbs'][] = Yii::t('common', 'Мои движухи');
+$this->params['breadcrumbs'][] = Yii::t('common', 'Мои мероприятия');
 ?>
     <div><a class="btn btn-primary" href="<?=Url::to(['myactivity/update']);?>"><?=Yii::t('common', 'Создать')?></a></div><br>
 <?php

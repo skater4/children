@@ -6,6 +6,7 @@ use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
+use app\components\Csc;
 
 /**
  * User model
@@ -17,6 +18,7 @@ use yii\web\IdentityInterface;
  * @property string $password_reset_token
  * @property string $verification_token
  * @property string $email
+ * @property string $role
  * @property string $birthday
  * @property string $auth_key
  * @property integer $status
@@ -91,6 +93,11 @@ class User extends ActiveRecord implements IdentityInterface
         } else {
             return false;
         }
+    }
+
+    public static function getRole($user_id) {
+        $role = static::find()->select('role')->where(['id' => $user_id])->one();
+        return $role->role;
     }
 
     /**

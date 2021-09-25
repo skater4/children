@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use kartik\datetime\DateTimePicker;
 use yii\bootstrap\Tabs;
-if ($activity_id == 0) $title = Yii::t('common', 'Создание движухи');
-else $title = Yii::t('common', 'Редактирование движухи ') . $model->name;
+if ($activity_id == 0) $title = Yii::t('common', 'Создание мероприятия');
+else $title = Yii::t('common', 'Редактирование мероприятия ') . $model->name;
 $this->title = Yii::t('common', $title);
 ?>
 
 <h1><?=Yii::t('common', $title)?></h1>
 <?php
-$this->params['breadcrumbs'][] = ['label' => Yii::t('common', 'Мои движухи'), 'url' => Url::to(['myactivity/index'])];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('common', 'Мои мероприятия'), 'url' => Url::to(['myactivity/index'])];
 $this->params['breadcrumbs'][] = ['label' => $model->name];
 $items = [
     [

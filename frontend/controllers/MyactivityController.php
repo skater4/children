@@ -177,7 +177,7 @@ class MyactivityController extends \yii\web\Controller
             if ($model->validate())
             {
                 $model->save();
-                Yii::$app->session->setFlash('success', Yii::t('common', 'К успеху шел!'));
+                Yii::$app->session->setFlash('success', Yii::t('common', 'Успешно!'));
                 return $this->redirect(['myactivity/update/' . $model->getPrimaryKey()]);
             }
         }

@@ -61,7 +61,7 @@ return [
     'Отправить' => 'Send',
     'Категория' => 'Category',
     'Сообщение' => 'Message',
-    'К успеху шел!' => 'Success!',
+    'Успешно!' => 'Success!',
     'Движуха не найдена =(' => 'Activity not found =(',
     'Входящие заявки' => 'Incoming requests',
     'Ожидание' => 'Pending',
@@ -100,5 +100,7 @@ return [
     'Поделяться ссылкой' => 'Repost',
     'Войдите в систему для подачи заявки' => 'Log in to apply',
     'Вы успешно авторизовались' => 'You have been successfully logged in',
-    'Спасибо за регистрацию! На вашу почту было выслано письмо для активации учетной записи.' => 'Thank you for registration. Please check your inbox for verification email.'
+    'Спасибо за регистрацию! На вашу почту было выслано письмо для активации учетной записи.' => 'Thank you for registration. Please check your inbox for verification email.',
+    'Воспитанник' => 'Pupil',
+    'Волонтер' => 'Volunteer',
 ];

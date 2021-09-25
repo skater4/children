@@ -6,7 +6,7 @@ use sintret\chat\ChatRoom;
 /*
 echo \sintret\chat\ChatRoom::widget([
         'url' => \yii\helpers\Url::to(['/messages/send']),
-        'models' => User::className(),
+        'models' => \common\models\User::className(),
         'object_id' => $object_id,
         'object' => 'activity',
     ]

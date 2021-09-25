@@ -1,6 +1,7 @@
 <?php
 ini_set('display_errors', 0);
 error_reporting(E_ALL);
+$db = require __DIR__ . '/db.php';
 return [
     'language' => 'ru',
     'sourceLanguage' => 'ru',
@@ -26,13 +27,7 @@ return [
             'cookieValidationKey' => 'someRandomKey',
 
         ],
-        'db' => [
-            'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=skater4.mysql.tools;dbname=skater4_children',
-            'username' => 'skater4_skater4',
-            'password' => 'gavnovoz',
-            'charset' => 'utf8',
-        ],
+        'db' => $db,
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             'viewPath' => '@common/mail',

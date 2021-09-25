@@ -240,7 +240,7 @@ class UserController extends \yii\web\Controller
             throw new BadRequestHttpException($e->getMessage());
         }
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->updateUser()) {
-            Yii::$app->session->setFlash('success', Yii::t('common', 'К успеху шел!'));
+            Yii::$app->session->setFlash('success', Yii::t('common', 'Успешно!'));
             return $this->refresh();
         }
         return $this->render('update', [
