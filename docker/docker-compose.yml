@@ -1,0 +1,45 @@
+version: '3'
+services:
+  apache:
+    build: ./apache
+    ports:
+      - "80:80"
+    links:
+      - mysql
+    depends_on:
+      - mysql
+      - php
+    volumes:
+      - ../:/usr/local/apache2/htdocs
+  php:
+    build: ./php
+    container_name: php
+    links:
+      - mysql
+    depends_on:
+      - mysql
+    volumes:
+      - ../:/usr/local/apache2/htdocs
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - ../dump.sql:/docker-entrypoint-initdb.d/dump.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: children
+      MYSQL_USER: children
+      MYSQL_PASSWORD: children
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8080:80
+    links:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1

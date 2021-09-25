@@ -156,3 +156,7 @@ a.desc:after {
     height: 27px;
     border-radius: 15px !important;
 }
+
+.out {
+    -webkit-tap-highlight-color: #FFC66D;
+}

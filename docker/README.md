@@ -1,0 +1,1 @@
+docker-compose up --build && docker exec php php db_install.php

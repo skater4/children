@@ -8,10 +8,7 @@ use yii\widgets\ActiveForm;
 use app\models\Participant;
 use yii\helpers\Url;
 $this->title = Yii::t('common', $model->name);
-?>
 
-<h1><?=Yii::t('common', $model->name)?></h1>
-<?php
 $this->registerMetaTag(['name' => 'og:title', 'content' => $model->name]);
 $this->registerMetaTag(['name' => 'og:description', 'content' => $model->description]);
 $this->registerMetaTag(['name' => 'og:url', 'content' => Url::current()]);
@@ -20,15 +17,18 @@ $this->registerMetaTag(['name' => 'og:image', 'content' => 'http://' . Yii::$app
 $this->params['breadcrumbs'][] = ['label' => Yii::t('common', 'Поиск мероприятия'), 'url' => Url::to(['activities/index'])];
 $this->params['breadcrumbs'][] = ['label' => $model->name];
 ?>
+<div class="position-relative hstack gap-3">
+    <div><h1 style="width: fit-content"><?=Yii::t('common', $model->name)?></h1></div>
 <?php $form = ActiveForm::begin(['action' => Url::to(['activities/applyparticipant'])]); ?>
-<a class="btn btn-primary" onclick="javascript:history.back();"><?=Yii::t('common', 'Назад')?></a>
-<?php
+    <div class="position-relative hstack gap-2 start-50 ms-5"><a class="btn btn-primary" onclick="javascript:history.back();"><?=Yii::t('common', 'Назад')?></a>
+    <div><?php
 if (Yii::$app->user->id != $model->user_id && !Participant::userApplied($model->id, Yii::$app->user->id) && !Yii::$app->user->isGuest):
     Modal::begin([
         'header' => Yii::t('common', 'Подать заявку'),
         'toggleButton' => ['label' => Yii::t('common', 'Подать заявку'), 'class' => 'btn btn-primary']
     ]);
-    ?>
+    ?></div>
+</div></div>
     <?= $form->field($new_participant, 'activity_id')->hiddenInput(['readonly' => true, 'value' => $model->id])->label(false) ?>
     <?= $form->field($new_participant, 'user_id')->hiddenInput(['readonly' => true, 'value' => Yii::$app->user->id])->label(false) ?>
     <?= $form->field($new_participant, 'status')->hiddenInput(['readonly' => true, 'value' => "P"])->label(false) ?>

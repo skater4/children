@@ -1,7 +1,11 @@
 <?php
 ini_set('display_errors', 0);
 error_reporting(E_ALL);
-$db = require __DIR__ . '/db.php';
+$db = array_merge(
+    require __DIR__ . '/db.php',
+    require __DIR__ . '/db_local.php'
+);
+
 return [
     'language' => 'ru',
     'sourceLanguage' => 'ru',

@@ -20,6 +20,7 @@ AppAsset::register($this);
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,20 +31,23 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<div class="wrap">
+<div class="wrap" style="min-height: 150px;">
     <?php
     NavBar::begin([
         'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
+            'class' => 'navbar navbar-expand navbar-inverse navbar-fixed-top',
+            "style"=>"background-color: rgb(241, 200, 85);"
         ],
     ]);
     $menuItems = [
-        ['label' => Yii::t('common', 'Главная'), 'url' => Url::to(['site/index'])],
-        ['label' => Yii::t('common', 'Контакты'), 'url' => Url::to(['/site/contact'])],
+        ['label' => Yii::t('common', 'Мероприятия'), 'url' => Url::to(['site/index'])],
+        ['label' => Yii::t('common', 'Наставники'), 'url' => Url::to(['/site/contact'])],
+        ['label' => Yii::t('common', 'Партнёры'), 'url' => Url::to(['/site/contact'])],
+        ['label' => Yii::t('common', 'Статистика'), 'url' => Url::to(['/site/contact'])],
     ];
-
+    ?> <div class="container-md container-fluid"> <?php
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-left'],
         'items' => $menuItems,
@@ -64,13 +68,13 @@ AppAsset::register($this);
 
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => Yii::t('common', 'Регистрация'), 'url' => Url::to(['/site/signup'])];
-        $menuItems[] = ['label' => Yii::t('common', 'Войти'), 'url' => Url::to(['/site/login'])];
+        $menuItems[] = ['label' => Yii::t('common', 'Вход'), 'url' => Url::to(['/site/login'])];
     } else {
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
-                Yii::t('common', 'Выйти') . ' (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
+                Yii::t('common', 'Выход') . ' (' . Yii::$app->user->identity->username . ')',
+                ['class' => 'btn btn-outline-success me-2']
             )
             . Html::endForm()
             . '</li>';
@@ -82,7 +86,7 @@ AppAsset::register($this);
     ]);
 
     NavBar::end();
-    ?>
+        ?> </div>
 
     <div class="container">
         <?= Breadcrumbs::widget([
@@ -93,7 +97,7 @@ AppAsset::register($this);
     </div>
 </div>
 
-<footer class="footer">
+<footer class="footer fixed-bottom">
     <div class="container">
         <p class="pull-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?> | <?= $this->render('language'); ?></p>
     </div>
